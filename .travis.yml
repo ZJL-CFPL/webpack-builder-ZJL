@@ -1,5 +1,7 @@
 language: node_js
 
+node_js:stable
+
 sudo:false
 
 cache:
@@ -7,11 +9,9 @@ cache:
   directories:
     -node_modules
 
-node_js:stable
-
 install:
   -npm install -D
   -cd ./test/smoke/template
   -npm install -D
-script:
+scripts:
   -npm test
