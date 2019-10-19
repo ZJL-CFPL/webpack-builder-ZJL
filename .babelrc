@@ -1,0 +1,9 @@
+{
+    "presets": [
+        "@babel/preset-env"
+        // "@babel/preset-react"
+    ],
+    "plugins": [
+        "@babel/plugin-syntax-dynamic-import"// 支持babel语法动态导入的插件
+    ]
+}

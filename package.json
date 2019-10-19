@@ -5,15 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc ./node_modules/.bin/_mocha",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./lib/webpack.dev.js --open",
+    "build": "cross-env NODE_ENV=production webpack --config ./lib/webpack.prod.js --env.production",
     "eslint": "eslint --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.6.3",
     "assert": "^2.0.0",
     "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
+    "cross-env": "^6.0.3",
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
