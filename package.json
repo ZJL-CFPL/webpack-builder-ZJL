@@ -10,7 +10,7 @@
     "eslint": "eslint --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "zoinlia",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.4",
