@@ -1,0 +1,16 @@
+*{
+  color: red;
+}
+@font-face {
+  font-family: 'mont-b';
+  src: url('../../assets/fonts/mont-bold.ttf') format('truetype');
+}
+.bg{
+  width: 500px;
+  height: 500px;
+  background: url('../../assets/img/pic.jpg');
+  background-size: 100% auto;
+}
+.test{
+  font-family: 'mont-b';
+}
