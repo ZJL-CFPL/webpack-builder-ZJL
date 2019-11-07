@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <%= require('../../assets/template/meta.ejs')() %>
   <title>First Kiss with webpack</title>
 </head>
+
 <body>
-  <div class="test">成功 哦也</div>
-  <a href="javascript:void(0)">神奇了</a>
-  <p>我是谁</p>
+  <div class="test">test</div>
+  <p>success</p>
+  <div class="player" id="player"></div>
+  <div id="app">
+    {{ message }}
+  </div>
+  <div id="btn">clicks</div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var player;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '1080',
+      width: '1920',
+      videoId: '9W_mLJs5Bic',
+      events: {
+
+      }
+    })
+  }
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!'
+    }
+  })
+</script>
+
 </html>
