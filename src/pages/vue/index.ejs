@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%= require('../../assets/template/meta.ejs')() %>
+  <title>Vue Try</title>
+</head>
+
+<body>
+  <div id="app">
+    {{ message }}
+    <div v-text ="name+' wo~'"></div>
+    <div v-html = "htmls"></div>
+  </div>
+  <div id="app2">
+    {{ fullName }}
+    {{ fullName2() }}
+    {{ theFullName }}
+  </div>
+  <div id="app3">
+    {{ fullName }}
+    <div 
+      @click="handleDivClick"
+      :class="{activated: isAct}"
+    >
+      Hello Word
+      <p :style="[styleObj,{fontSize:'20px'}]" class="tips">tips</p>
+      <p v-if="isAct">test</p>
+    </div>
+  </div>
+  <div id="app4">
+    <p 
+      v-for="(item,index) of list"
+      :key="'key' + index"
+    >{{item}}====={{index}}</p>
+  </div>
+  <div id="app5">
+    <table>
+      <tbody>
+          <tr is="row"></tr>
+          <tr is="row"></tr>
+          <tr is="row"></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="app6">
+    <component :is="type"></component>
+    <button @click="handleChange">Change</button>
+  </div>
+  <div id="app7">
+    <childs>
+        <template slot-scope="props">
+          <li>
+            <h1>{{props.item.name}}</h1>
+          </li>
+        </template>
+    <childs>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!',
+      name:'大表哥',
+      htmls:'<h4>HHHHHH</h4>'
+    }
+  })
+  var vm2 = new Vue({
+    el:'#app2',
+    data:{
+      firstName:'卓',
+      lastName:'Jin亮',
+      theFullName:'哈哈哈哈哈'
+    },
+    computed:{
+      fullName:function(){
+        console.log(this);
+        return this.firstName + this.lastName;
+      }
+    },
+    methods:{
+      fullName2:function(){
+        return this.firstName + this.lastName;
+      }
+    },
+    watch:{
+      firstName:function(){
+        this.theFullName = this.firstName + this.lastName
+      }
+    }
+  })
+  var vm3 = new Vue({
+    el:'#app3',
+    data:{
+      firstName:'123',
+      lastName:'456',
+      isAct:true,
+      styleObj:{
+        color:'blue'
+      }
+    },
+    computed:{
+      fullName:{
+        get:function(){
+          return this.firstName+this.lastName;
+        },
+        set:function(value){
+          console.log(value)
+        }
+      }
+    },
+    methods:{
+      handleDivClick:function(){
+        this.isAct = !this.isAct;
+      }
+    }
+  })
+  var vm4 = new Vue({
+    el:'#app4',
+    data:{
+      list:['love','you','more','than','i','can','tell','you']
+    }
+  })
+  Vue.component('row',{
+    template:'<tr><td>this is a row</td></tr>'
+  })
+  var vm5 = new Vue({
+    el:'#app5',
+    data:{
+
+    },
+  })
+
+  var childOne = {
+    template:'<div v-once>child-one</div>'
+  },childTwo = {
+    template:'<div v-once>child-two</div>'
+  }
+  var vm6 = new Vue({
+    el:'#app6',
+    data:{
+      type:'child-one'
+    },
+    components:{
+      childOne:childOne,
+      childTwo:childTwo
+    },
+    methods:{
+      handleChange:function(){
+        this.type= this.type === 'child-one'?'child-two':'child-one';
+      }
+    }
+  })
+
+  // 作用域插槽 slot
+
+  Vue.component('childs',{
+    data:function(){
+      return{
+        list:[{name:123,age:24},{name:112233},{name:1112222333}]
+      }
+    },
+    template:`<div>
+                <ul>
+                  <slot v-for="item of list" :item=item></slot>
+                </ul>
+              </div> `
+  })
+  var vm7 = new Vue({
+    el:'#app7',
+    data:{
+
+    }
+  })
+</script>
+
+</html>
