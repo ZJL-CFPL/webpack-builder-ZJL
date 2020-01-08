@@ -1,5 +1,6 @@
 *{
   color: red;
+  box-sizing: border-box;
 }
 @font-face {
   font-family: 'mont-b';
@@ -7,6 +8,7 @@
 }
 .bg{
   width: 500px;
+  box-shadow: none;
   height: 500px;
   background: url('../../assets/img/pic.jpg');
   background-size: 100% auto;
