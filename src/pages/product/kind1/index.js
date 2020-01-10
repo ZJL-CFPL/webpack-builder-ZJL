@@ -1,4 +1,5 @@
 import './kind.scss'
+import $ from 'jquery';
     
 var mySwiper = new Swiper ('.swiper-container', {
   direction: 'horizontal', // 垂直切换选项
@@ -28,3 +29,7 @@ var data = {
 };
 var html = template('test', data);
 document.getElementById('content').innerHTML = html;
+
+$('.titleclick').on('click',function(){
+  console.log('click title')
+})

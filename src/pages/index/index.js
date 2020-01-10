@@ -15,6 +15,18 @@ var ajaxPost = function (type,data,success,error) {
   });
 };
 
+$('#clickme').on('click',function(){
+  _axios.post('/api/website/koronaNewsletter/addKoronaNewsletter', {
+    email: '_axios.test1@qq.com',
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+})
+
 $('#sign1').on('click',function(){
   var email1Todo =  new Check('#email1');
   // console.log(email1Todo.isEmail());
